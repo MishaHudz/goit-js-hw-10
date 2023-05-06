@@ -2,7 +2,7 @@ import { coutryList, infoFildForOneCountry } from '../../index';
 
 export function generateHTMLforOneCountry(coutryObj) {
   const {
-    flags: { png, alt },
+    flags: { svg, alt },
     capital,
     population,
     languages,
@@ -10,14 +10,14 @@ export function generateHTMLforOneCountry(coutryObj) {
   } = coutryObj[0];
 
   const counryCapitel = capital.join('');
-  const countryLanguagesList = Object.values(languages).join(',');
-  const markup = `<img class="country-info-flag" width="60px" height="40px" src="${png}" alt="${alt}" />
+  const countryLanguagesList = Object.values(languages).join(', ');
+  const markup = `<img class="country-info-flag"  src="${svg}" alt="${alt}" width="100px"/>
 <p class="country-info-name">${official}</p>
 
 <ul class="description-list">
-  <li class="description-list-item">Capitel:<span class="description-list-value">${counryCapitel}</span></li>
-  <li class="description-list-item">Population:<span class="description-list-value">${population}</span></li>
-  <li class="description-list-item">Languages:<span class="description-list-value">${countryLanguagesList}</span></li>
+  <li class="description-list-item">Capitel:<span class="description-list-value">&nbsp;${counryCapitel}</span></li>
+  <li class="description-list-item">Population:<span class="description-list-value">&nbsp;${population}</span></li>
+  <li class="description-list-item">Languages:<span class="description-list-value">&nbsp;${countryLanguagesList}</span></li>
 </ul>`;
   return markup;
 }
@@ -25,6 +25,7 @@ export function generateHTMLforOneCountry(coutryObj) {
 export function clearMarcup() {
   infoFildForOneCountry.innerHTML = '';
   coutryList.innerHTML = '';
+  infoFildForOneCountry.classList.remove('style');
 }
 
 export function generateHTMLListCountry(coutryArr) {
@@ -32,12 +33,12 @@ export function generateHTMLListCountry(coutryArr) {
     .map(country => {
       const {
         name: { official },
-        flags: { png, alt },
+        flags: { svg, alt },
       } = country;
-      return `  <li class="country-list-item">
-        <img class="country-list-item-img" width="60px" height="40px" src="${png}" alt="${alt}" />
-        <p class="country-list-item-desc">${official}</p>
-      </li>`;
+      return `<li class="country-list-item">        
+                <img class="country-list-item-img" src="${svg}" alt="${alt}" width="60px" /
+                <p class="country-list-item-desc">${official}</p>
+            </li>`;
     })
     .join('');
   return markup;

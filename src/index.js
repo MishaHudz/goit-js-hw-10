@@ -30,6 +30,7 @@ function onInputChange(evt) {
       }
       if (res.length === 1) {
         clearMarcup();
+        infoFildForOneCountry.classList.add('style');
         infoFildForOneCountry.insertAdjacentHTML(
           'afterbegin',
           generateHTMLforOneCountry(res)
