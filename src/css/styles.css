@@ -86,7 +86,7 @@ body {
   outline-width: 0px;
 }
 
-.country-info.style {
+.country-info.visible-coutry-card {
   width: 400px;
   min-height: 400px;
   background: linear-gradient(180deg, #2b2d37 0%, #262933 100%);

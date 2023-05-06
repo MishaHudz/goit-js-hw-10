@@ -1,11 +1,11 @@
 import debounce from 'lodash.debounce';
-import { fetchCountries } from './css/js/fetchCountries';
+import { fetchCountries } from './js/fetchCountries';
 import {
   generateHTMLforOneCountry,
   clearMarcup,
   generateHTMLListCountry,
-} from './css/js/generateMakcup';
-import { showToManyMassage, showErrorMassage } from './css/js/message';
+} from './js/generateMakcup';
+import { showToManyMassage, showErrorMassage } from './js/message';
 import './css/styles.css';
 
 const DEBOUNCE_DELAY = 300;
@@ -24,24 +24,25 @@ function onInputChange(evt) {
   }
   fetchCountries(inputValue)
     .then(res => {
+      clearMarcup();
       if (res.length > 10) {
-        clearMarcup();
         showToManyMassage();
+        return;
       }
       if (res.length === 1) {
-        clearMarcup();
-        infoFildForOneCountry.classList.add('style');
+        infoFildForOneCountry.classList.add('visible-coutry-card');
         infoFildForOneCountry.insertAdjacentHTML(
           'afterbegin',
           generateHTMLforOneCountry(res)
         );
+        return;
       }
       if (res.length > 1 && res.length <= 10) {
-        clearMarcup();
         coutryList.insertAdjacentHTML(
           'afterbegin',
           generateHTMLListCountry(res)
         );
+        return;
       }
     })
     .catch(() => {

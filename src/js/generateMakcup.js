@@ -1,4 +1,4 @@
-import { coutryList, infoFildForOneCountry } from '../../index';
+import { coutryList, infoFildForOneCountry } from '../index';
 
 export function generateHTMLforOneCountry(coutryObj) {
   const {
@@ -25,7 +25,7 @@ export function generateHTMLforOneCountry(coutryObj) {
 export function clearMarcup() {
   infoFildForOneCountry.innerHTML = '';
   coutryList.innerHTML = '';
-  infoFildForOneCountry.classList.remove('style');
+  infoFildForOneCountry.classList.remove('visible-coutry-card');
 }
 
 export function generateHTMLListCountry(coutryArr) {
