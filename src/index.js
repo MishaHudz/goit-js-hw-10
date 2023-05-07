@@ -42,6 +42,8 @@ function onInputChange(evt) {
           'afterbegin',
           generateHTMLListCountry(res)
         );
+
+        coutryList.addEventListener('click', onOneItemFromListClick);
         return;
       }
     })
@@ -49,4 +51,19 @@ function onInputChange(evt) {
       showErrorMassage();
       clearMarcup();
     });
+}
+
+function onOneItemFromListClick(evt) {
+  if (evt.target.nodeName !== 'LI') return;
+
+  const selectedCountry = String(evt.target.innerText.trim());
+  clearMarcup();
+  inputFild.value = '';
+  fetchCountries(selectedCountry).then(res => {
+    infoFildForOneCountry.classList.add('visible-coutry-card');
+    infoFildForOneCountry.insertAdjacentHTML(
+      'afterbegin',
+      generateHTMLforOneCountry(res)
+    );
+  });
 }

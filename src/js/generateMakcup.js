@@ -36,7 +36,7 @@ export function generateHTMLListCountry(coutryArr) {
         flags: { svg, alt },
       } = country;
       return `<li class="country-list-item">        
-                <img class="country-list-item-img" src="${svg}" alt="${alt}" width="60px" /
+                <img class="country-list-item-img" src="${svg}" alt="${alt}" width="60px" />
                 <p class="country-list-item-desc">${official}</p>
             </li>`;
     })
